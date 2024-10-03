@@ -40,16 +40,16 @@ public class Player : MonoBehaviour
 
     private IEnumerator Attack() //function to make the attack
     {
-        while (EnemyManager.Instance.EnemiesList.Count > 0) //only attack there is at least one alvie enemy
+        while (EnemyFactory.Instance.EnemiesList.Count > 0) //only attack there is at least one alvie enemy
         {
             yield return cooldown.StartCoroutine("WaitForCooldown"); //wait until cooldown finishes
 
             //get how many targets to attack. If more enemies than the number of max targets, n equals to max target, otherwise the amount of enemies left
-            int targetCount = (SkillManager.Instance.CurrentActiveSkill.NumberOfTargets <= EnemyManager.Instance.EnemiesList.Count) ?
-                SkillManager.Instance.CurrentActiveSkill.NumberOfTargets : EnemyManager.Instance.EnemiesList.Count;
+            int targetCount = (SkillManager.Instance.CurrentActiveSkill.NumberOfTargets <= EnemyFactory.Instance.EnemiesList.Count) ?
+                SkillManager.Instance.CurrentActiveSkill.NumberOfTargets : EnemyFactory.Instance.EnemiesList.Count;
 
             var possibleTargets = new List<Enemy>();
-            foreach(var enemy in EnemyManager.Instance.EnemiesList)
+            foreach(var enemy in EnemyFactory.Instance.EnemiesList)
             {
                 possibleTargets.Add(enemy);
             }
@@ -61,6 +61,7 @@ public class Player : MonoBehaviour
             }
 
             playerAnim.SetTrigger("Attack"); //trigger the player animation
+            SoundManager.Instance.PlayAttackSound();
         }
 
         if (GameManager.Instance.IsBattling) //if we kill all enemies in time

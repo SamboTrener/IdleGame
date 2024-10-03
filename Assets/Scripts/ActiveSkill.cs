@@ -24,6 +24,7 @@ public class ActiveSkill : MonoBehaviour
     public int NumberOfTargets { get; private set; }
     public int ID { get; private set; }
     public int UnlockLevel { get;private set; }
+    public bool IsFirstPickup { get; set; } = true;
 
     public int SpeedLevel
     {
@@ -87,20 +88,32 @@ public class ActiveSkill : MonoBehaviour
             }
         }
 
-        skillDescription.text = activeSkillSO.Description;
-        skillImage.sprite = activeSkillSO.SkillIcon; //set up the image to show the skill icon
+        if(YGManager.GetLanguageString() == "ru")
+        {
+            skillDescription.text = activeSkillSO.DescriptionRU;
+        }
+        else
+        {
+            skillDescription.text = activeSkillSO.Description;
+        }
 
-        if (activeSkillSO.ID == 0) //unlock the skill if it's a starting skill
-            Unlock();
+        skillImage.sprite = activeSkillSO.SkillIcon; //set up the image to show the skill icon
 
         selectButton = GetComponent<Button>();
         selectButton.onClick.AddListener(Select);
+    }
+
+    private void Start()
+    {
+        if (activeSkillSO.ID == 0) //unlock the skill if it's a starting skill
+            Unlock();
     }
 
     public void Unlock() //unlock this active skill
     {
         if (!Unlocked)
         {
+            SaveLoadManager.UnlockSkillByID(ID);
             Unlocked = true;
 
             Color color = skillImage.color; //this and following two lines will change the alpha value to 255
@@ -120,6 +133,7 @@ public class ActiveSkill : MonoBehaviour
             skillImage.color = HUD.Instance.GetHighlightColor(); //change the color of this skill when it's selected
 
             SkillManager.Instance.SelectedSkill = this; //update the selectedActiveSkill varialbe in PlayerStats script
+
         }
         else
         {

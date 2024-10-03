@@ -1,0 +1,67 @@
+{
+  "idSave": 3732,
+  "isFirstSession": false,
+  "language": "en",
+  "promptDone": false,
+  "Level": 2,
+  "Money": 14,
+  "ActivatedSkillId": 0,
+  "Skills": [
+    {
+      "ID": 0,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 1,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 2,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 3,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 4,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 5,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 6,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    },
+    {
+      "ID": 7,
+      "damageLevel": 0,
+      "speedLevel": 0,
+      "unlocked": false,
+      "isFirstPickup": true
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 //Script used to controlled the activated skill
 public class ActivatedSkill : MonoBehaviour
@@ -19,11 +20,10 @@ public class ActivatedSkill : MonoBehaviour
     }
 
     [SerializeField] Image newSkillAlarm; //when you get a new active skill, this image will pop out
+    [SerializeField] TextMeshProUGUI newSkillAlarmText;
     [SerializeField] Color newSkillAlarmColor; //the color of the image
     [SerializeField] Image activatedSkillIcon;
     [SerializeField] Button changeActivatedSkillButton;
-
-    Canvas canvas;
 
     void Awake()
     {
@@ -34,37 +34,31 @@ public class ActivatedSkill : MonoBehaviour
         else
         {
             if (this != instance)
-                Destroy(this.gameObject);
+                Destroy(gameObject);
         }
 
-        canvas = GetComponent<Canvas>();
-
-        changeActivatedSkillButton.onClick.AddListener(ChangeActiveSkill);
+        changeActivatedSkillButton.onClick.AddListener(ChangeActivatedSkill);
     }
 
     void Start()
     {
-        activatedSkillIcon.sprite = SkillManager.Instance.CurrentActiveSkill.SkillIcon; //display the actived skill icon
+        activatedSkillIcon.sprite = SkillManager.Instance.CurrentActiveSkill.SkillIcon; 
     }
 
-    void ChangeActiveSkill() //function called when you click the "Accept" button
+    void ChangeActivatedSkill() 
     {
-        if (SkillManager.Instance.SelectedSkill != null && SkillManager.Instance.CurrentActiveSkill != SkillManager.Instance.SelectedSkill) 
-            //we change the activated skill only when you selected a active skill and it's not the same as the one currently you are using
+        if (SkillManager.Instance.TryChangeActivatedSkill())
         {
-            SkillManager.Instance.CurrentActiveSkill = SkillManager.Instance.SelectedSkill;
-
-            HUD.Instance.UpdateSkillText();
-
             activatedSkillIcon.sprite = SkillManager.Instance.CurrentActiveSkill.SkillIcon;
         }
 
-        HUD.Instance.HideAbilityWindow(); //hide the active skill selecting window
+        HUD.Instance.HideAbilityWindow(); 
     }
 
     public void StartNewSkillAlarm() //start new skill alarm
     {
         newSkillAlarm.enabled = true; //enable the image
+        newSkillAlarmText.gameObject.SetActive(true);
 
         StartCoroutine(nameof(NewSkillAlarm));
     }
@@ -72,6 +66,7 @@ public class ActivatedSkill : MonoBehaviour
     public void StopNewSkillAlarm()
     {
         newSkillAlarm.enabled = false; //disable the image
+        newSkillAlarmText.gameObject.SetActive(false);
 
         StopCoroutine(nameof(NewSkillAlarm));
     }
@@ -87,6 +82,7 @@ public class ActivatedSkill : MonoBehaviour
             c.a = 0; //set the alpha value of the new color to 0
 
             newSkillAlarm.color = Color.Lerp(newSkillAlarmColor, c, t); //loop the color of the alarm image between these two colors
+            newSkillAlarmText.color = Color.Lerp(newSkillAlarmColor, c, t); //loop the color of the alarm image between these two colors
 
             yield return null;
         }

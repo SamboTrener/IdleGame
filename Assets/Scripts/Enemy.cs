@@ -40,7 +40,9 @@ public class Enemy : MonoBehaviour
 
             SaveLoadManager.EarnMoney(loot); //give the player the reward
 
-            EnemyManager.Instance.EnemiesList.Remove(this); //remove this enmey from the enemy list
+            EnemyFactory.Instance.EnemiesList.Remove(this); //remove this enmey from the enemy list
+
+            SoundManager.Instance.PlayGoblinDieSound();
         }
 
         anim.SetTrigger("Damage"); //trigger the animation when the enemy gets attacked

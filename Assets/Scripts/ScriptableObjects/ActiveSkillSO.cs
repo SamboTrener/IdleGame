@@ -12,4 +12,5 @@ public class ActiveSkillSO : ScriptableObject
     public Sprite SkillIcon;
     public int UnlockLevel;
     public string Description;
+    public string DescriptionRU;
 }
