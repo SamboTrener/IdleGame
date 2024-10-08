@@ -17,5 +17,6 @@ namespace YG
         public int Money;
         public int ActivatedSkillId;
         public List<Skill> Skills;
+        public bool IsX2Purchased = false;
     }
 }

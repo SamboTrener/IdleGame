@@ -20,7 +20,7 @@ public static class YGManager
 
     public static string GetLanguageString() => YandexGame.EnvironmentData.language;
 
-    public static void ShowRewarded() => YandexGame.RewVideoShow(0);
+    public static void ShowRewarded(int id) => YandexGame.RewVideoShow(id);
 
     public static void ShowFullAd() => YandexGame.FullscreenShow();
 

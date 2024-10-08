@@ -10,12 +10,12 @@ public class RewardedButton : MonoBehaviour
 
     private void OnEnable()
     {
-        YandexGame.RewardVideoEvent += GetReward;
+        YandexGame.RewardVideoEvent += TryGetReward;
     }
 
     private void OnDisable()
     {
-        YandexGame.RewardVideoEvent -= GetReward;
+        YandexGame.RewardVideoEvent -= TryGetReward;
     }
 
     private void Awake()
@@ -29,17 +29,20 @@ public class RewardedButton : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(ShowRewarded);
+        button.onClick.AddListener(() => ShowRewarded(1));
     }
 
-    void GetReward(int id)
+    void TryGetReward(int id)
     {
-        SaveLoadManager.EarnMoney(CountReward());
+        if(id == 1)
+        {
+            SaveLoadManager.EarnMoney(CountReward());
+        }
     }
 
-    void ShowRewarded()
+    void ShowRewarded(int id)
     {
-        YGManager.ShowRewarded();
+        YGManager.ShowRewarded(id);
     }
 
     public int CountReward()

@@ -70,6 +70,9 @@ public static class SaveLoadManager
         YandexGame.SaveProgress();
     }
 
+    public static bool Is2XPurchased => YandexGame.savesData.IsX2Purchased;
+    public static void PurchaseX2Mode() => YandexGame.savesData.IsX2Purchased = true;
+
     public static void Reset() //function used when starting a new game
     {
         YandexGame.savesData.Level = 1;
@@ -77,6 +80,8 @@ public static class SaveLoadManager
         YandexGame.savesData.Money = 0;
 
         YandexGame.savesData.ActivatedSkillId = 0;
+
+        YandexGame.savesData.IsX2Purchased = false;
 
         YandexGame.savesData.Skills = new List<Skill>();
 

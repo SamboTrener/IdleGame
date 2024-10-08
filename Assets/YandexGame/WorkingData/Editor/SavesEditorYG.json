@@ -1,10 +1,10 @@
 {
-  "idSave": 3732,
+  "idSave": 5760,
   "isFirstSession": false,
   "language": "en",
   "promptDone": false,
-  "Level": 2,
-  "Money": 14,
+  "Level": 1,
+  "Money": 2,
   "ActivatedSkillId": 0,
   "Skills": [
     {
@@ -63,5 +63,6 @@
       "unlocked": false,
       "isFirstPickup": true
     }
-  ]
+  ],
+  "IsX2Purchased": true
 }
