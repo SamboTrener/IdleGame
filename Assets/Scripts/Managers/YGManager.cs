@@ -12,12 +12,6 @@ public static class YGManager
         YandexGame.NewLeaderboardScores(lbName, score);
     }
 
-    /*  public static void TestLb()
-      {
-          YandexGame.GetLeaderboard(lbName, 10, 3, 3, "small");
-          Debug.Log("");
-      }*/
-
     public static string GetLanguageString() => YandexGame.EnvironmentData.language;
 
     public static void ShowRewarded(int id) => YandexGame.RewVideoShow(id);

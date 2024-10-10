@@ -47,6 +47,7 @@ public static class SaveLoadManager
     public static void SetSelectedSkillId(int ID)
     {
         YandexGame.savesData.ActivatedSkillId = ID;
+        YandexGame.SaveProgress();
     }
 
     public static void UnlockSkillByID(int ID)
@@ -71,7 +72,20 @@ public static class SaveLoadManager
     }
 
     public static bool Is2XPurchased => YandexGame.savesData.IsX2Purchased;
-    public static void PurchaseX2Mode() => YandexGame.savesData.IsX2Purchased = true;
+
+    public static void PurchaseX2Mode() 
+    {
+        YandexGame.savesData.IsX2Purchased = true;
+        YandexGame.SaveProgress();
+    } 
+
+    public static float GetGameSpeed() => YandexGame.savesData.GameSpeed;
+
+    public static void SetGameSpeed(float value)
+    {
+        YandexGame.savesData.GameSpeed = value;
+        YandexGame.SaveProgress();
+    }
 
     public static void Reset() //function used when starting a new game
     {
@@ -82,6 +96,8 @@ public static class SaveLoadManager
         YandexGame.savesData.ActivatedSkillId = 0;
 
         YandexGame.savesData.IsX2Purchased = false;
+
+        YandexGame.savesData.GameSpeed = 1f;
 
         YandexGame.savesData.Skills = new List<Skill>();
 

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,18 +23,36 @@ public class SpeedUpButton : MonoBehaviour
     private void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(SpeedUpGame);
         if (SaveLoadManager.Is2XPurchased)
         {
             PreparePurchasedButton();
         }
+        else
+        {
+            button.onClick.AddListener(PurchaseX2Mode);
+        }
+    }
+
+    void PurchaseX2Mode()
+    {
+        YGManager.ShowRewarded(2);
     }
 
     void PreparePurchasedButton()
     {
+        button.onClick.RemoveAllListeners();
         textBeforeRewarded.SetActive(false);
         adIcon.SetActive(false);
-        xText.text = "X1";
+        if(SaveLoadManager.GetGameSpeed() == 1)
+        {
+            xText.text = "X1";
+            button.onClick.AddListener(SpeedUpGame);
+        }
+        else
+        {
+            xText.text = "X2";
+            button.onClick.AddListener(SlowDownGame);
+        }
     }
 
     void TryGetReward(int id)
@@ -51,25 +66,21 @@ public class SpeedUpButton : MonoBehaviour
 
     void SpeedUpGame()
     {
-        if (!SaveLoadManager.Is2XPurchased)
-        {
-            ShowRewarded(2);
-            return;
-        }
+        SaveLoadManager.SetGameSpeed(2f);
+        Debug.Log($"Game speed is {SaveLoadManager.GetGameSpeed()}");
         Time.timeScale = 2f;
         xText.text = "X2";
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(SlowDownGame);
     }
 
     void SlowDownGame()
     {
+        SaveLoadManager.SetGameSpeed(1f);
+        Debug.Log($"Game speed is {SaveLoadManager.GetGameSpeed()}");
         Time.timeScale = 1f;
         xText.text = "X1";
+        button.onClick.RemoveAllListeners();
         button.onClick.AddListener(SpeedUpGame);
-    }
-
-    void ShowRewarded(int id)
-    {
-        YGManager.ShowRewarded(id);
     }
 }

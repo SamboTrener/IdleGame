@@ -32,12 +32,16 @@ public class GameManager : MonoBehaviour
     {
         YandexGame.StopTheGameEvent += StopTheGame;
         YandexGame.StartTheGameEvent += StartTheGame;
+        YandexGame.CloseFullAdEvent += StartTheGame;
+        YandexGame.CloseVideoEvent += StartTheGame;
     }
 
     private void OnDisable()
     {
         YandexGame.StopTheGameEvent -= StopTheGame;
         YandexGame.StartTheGameEvent -= StartTheGame;
+        YandexGame.CloseFullAdEvent -= StartTheGame;
+        YandexGame.CloseVideoEvent -= StartTheGame;
     }
 
     void StopTheGame()
@@ -48,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     void StartTheGame()
     {
-        Time.timeScale = 1;
+        Time.timeScale = SaveLoadManager.GetGameSpeed();
         VolumeManager.Instance.UnPauseSounds();
     }
 
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
         {
             SaveLoadManager.Reset();
         }
+        StartTheGame();
     }
 
     void Start()

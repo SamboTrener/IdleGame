@@ -18,5 +18,6 @@ namespace YG
         public int ActivatedSkillId;
         public List<Skill> Skills;
         public bool IsX2Purchased = false;
+        public float GameSpeed = 1f;
     }
 }
