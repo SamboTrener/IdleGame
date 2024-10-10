@@ -1,10 +1,10 @@
 {
-  "idSave": 7362,
+  "idSave": 7418,
   "isFirstSession": false,
-  "language": "en",
+  "language": "ru",
   "promptDone": false,
-  "Level": 1,
-  "Money": 4,
+  "Level": 3,
+  "Money": 126,
   "ActivatedSkillId": 0,
   "Skills": [
     {
@@ -64,6 +64,6 @@
       "isFirstPickup": true
     }
   ],
-  "IsX2Purchased": true,
+  "IsX2Purchased": false,
   "GameSpeed": 1.0
 }
