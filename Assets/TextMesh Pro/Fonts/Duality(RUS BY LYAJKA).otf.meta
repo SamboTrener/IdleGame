@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bc0bd47294f8c649aecfb21d0f53691
+guid: 1b02691437903ee40b4dc0f7676bb88d
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Anime Ace v05
+  - Duality
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
