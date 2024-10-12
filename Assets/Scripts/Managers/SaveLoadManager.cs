@@ -87,6 +87,8 @@ public static class SaveLoadManager
         YandexGame.SaveProgress();
     }
 
+    public static bool CheckIfHasSaves() => YandexGame.savesData.Skills != null;
+
     public static void Reset() //function used when starting a new game
     {
         YandexGame.savesData.Level = 1;

@@ -1,17 +1,17 @@
 {
-  "idSave": 7418,
+  "idSave": 121,
   "isFirstSession": false,
   "language": "ru",
   "promptDone": false,
-  "Level": 3,
-  "Money": 126,
+  "Level": 4,
+  "Money": 58,
   "ActivatedSkillId": 0,
   "Skills": [
     {
       "ID": 0,
-      "damageLevel": 0,
-      "speedLevel": 0,
-      "unlocked": false,
+      "damageLevel": 17,
+      "speedLevel": 16,
+      "unlocked": true,
       "isFirstPickup": true
     },
     {
@@ -64,6 +64,6 @@
       "isFirstPickup": true
     }
   ],
-  "IsX2Purchased": false,
-  "GameSpeed": 1.0
+  "IsX2Purchased": true,
+  "GameSpeed": 2.0
 }

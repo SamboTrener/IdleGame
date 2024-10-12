@@ -15,6 +15,14 @@ public class Menu : MonoBehaviour
     {
         newGameBtn.onClick.AddListener(NewGame);
         continueBtn.onClick.AddListener(LoadGame);
+        if (!SaveLoadManager.CheckIfHasSaves())
+        {
+            continueBtn.interactable = false;
+        }
+        else
+        {
+            continueBtn.interactable = true;
+        }
     }
 
     public void NewGame() //function called when click new game button
